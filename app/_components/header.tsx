@@ -9,11 +9,15 @@ const Header = () => {
       <CardContent className="p2 intems-center flex flex-row justify-between">
         <Image
           alt="Saloon Barber"
-          src="/Photoroom.png"
+          src="/Photoroom1.png"
           height={2}
           width={250}
         />
-        <Button size="icon" variant="outline">
+        <Button
+          size="icon"
+          variant="outline"
+          className="cursor-pointer bg-lime-900 hover:bg-lime-700"
+        >
           <MenuIcon></MenuIcon>
         </Button>
       </CardContent>
