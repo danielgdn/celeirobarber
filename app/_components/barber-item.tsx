@@ -2,6 +2,8 @@ import { Barbeiros } from "@prisma/client"
 import { Card, CardContent } from "./ui/card"
 import Image from "next/image"
 import { Button } from "./ui/button"
+import { Badge } from "./ui/badge"
+import { StarIcon } from "lucide-react"
 
 interface BarberItemProps {
   barbeiro: Barbeiros
@@ -18,6 +20,13 @@ const BarberItem = ({ barbeiro }: BarberItemProps) => {
             src={barbeiro.imagemUrl}
             alt={barbeiro.nome}
           />
+          <Badge className="absolute top-2 left-2 bg-lime-900">
+            <StarIcon
+              size={12}
+              className="fill-lime-900 text-lime-200"
+            ></StarIcon>
+            <p className="font-semibold text-lime-200">5.0</p>
+          </Badge>
         </div>
         <div className="px-2 py-3">
           <h3 className="truncate font-semibold text-lime-900">
