@@ -64,7 +64,7 @@ const Home = async () => {
         <h2 className="mt-6 mb-3 text-xs font-bold text-lime-800 uppercase">
           Recomendado
         </h2>
-        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+        <div className="scrollbar-hiden md:scrollbar-thin md:scrollbar-thumb-lime-100 md:scrollbar-track-lime-200 flex gap-4 overflow-x-auto">
           {barbeiros.map((barbeiro) => (
             <BarberItem key={barbeiro.id} barbeiro={barbeiro} />
           ))}
