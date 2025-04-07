@@ -8,9 +8,13 @@ import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarberItem from "./_components/barber-item"
+import ServicosItem from "./_components/servicos-item"
+import { buscaRapida } from "./_constants/search"
 
 const Home = async () => {
   const barbeiros = await db.barbeiros.findMany({})
+
+  const servicos = await db.servicosBarbeiro.findMany({})
 
   return (
     <div>
@@ -28,7 +32,21 @@ const Home = async () => {
           </Button>
         </div>
 
-        <div className="relative mt-6 h-[150px] w-full">
+        <div className="mt-6 flex gap-3">
+          {buscaRapida.map((option) => (
+            <Button className="gap-2 text-lime-200" key={option.title}>
+              <Image
+                src={option.imageUrl}
+                width={16}
+                height={16}
+                alt={option.title}
+              />
+              {option.title}
+            </Button>
+          ))}
+        </div>
+
+        <div className="relative mt-6 h-[400px] w-full">
           <Image
             alt="agende seu horário"
             src="/Teste01.jpg"
@@ -69,7 +87,25 @@ const Home = async () => {
             <BarberItem key={barbeiro.id} barbeiro={barbeiro} />
           ))}
         </div>
+
+        <div className="scrollbar-hiden md:scrollbar-thin md:scrollbar-thumb-lime-100 md:scrollbar-track-lime-200 mt-6 flex gap-4 overflow-x-auto">
+          {servicos.map((servicos) => (
+            <ServicosItem key={servicos.id} servicos={servicos} />
+          ))}
+        </div>
       </div>
+
+      <footer>
+        <Card>
+          <CardContent className="px-5 py-2">
+            <p className="text-center text-sm text-lime-950">
+              © Copyright Celeiro Saloon Barber Av. Pref. José Juvenal Mafra,
+              1340 - Centro, Navegantes - SC, 88372-506 Telefone: (47)
+              99118-1181
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   )
 }

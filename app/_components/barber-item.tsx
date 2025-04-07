@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
 import { StarIcon } from "lucide-react"
+import Link from "next/link"
 
 interface BarberItemProps {
   barbeiro: Barbeiros
@@ -11,9 +12,9 @@ interface BarberItemProps {
 
 const BarberItem = ({ barbeiro }: BarberItemProps) => {
   return (
-    <Card className="m-0 min-w-[159px] py-0">
+    <Card className="m-0 min-w-[333px] py-0">
       <CardContent className="mt-0 p-0">
-        <div className="relative h-[159px] w-full">
+        <div className="relative h-[333px] w-full">
           <Image
             fill
             className="mt-0 rounded-xl object-cover"
@@ -28,13 +29,17 @@ const BarberItem = ({ barbeiro }: BarberItemProps) => {
             <p className="font-semibold text-lime-200">5.0</p>
           </Badge>
         </div>
+
         <div className="px-2 py-3">
           <h3 className="truncate font-semibold text-lime-900">
             {barbeiro.nome}
           </h3>
           <p className="truncate text-sm text-lime-800">{barbeiro.telefones}</p>
-          <Button className="mt-3 w-full cursor-pointer bg-lime-900 px-1 text-lime-200 hover:bg-lime-700">
-            Reservar
+          <Button
+            className="mt-3 w-full cursor-pointer bg-lime-900 px-1 text-lime-200 hover:bg-lime-700"
+            asChild
+          >
+            <Link href={`/barbeiros/${barbeiro.id}`}>Reservar</Link>
           </Button>
         </div>
       </CardContent>
