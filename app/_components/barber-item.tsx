@@ -12,29 +12,28 @@ interface BarberItemProps {
 
 const BarberItem = ({ barbeiro }: BarberItemProps) => {
   return (
-    <Card className="m-0 min-w-[333px] py-0">
+    <Card className="m-2 py-0">
       <CardContent className="mt-0 p-0">
-        <div className="relative h-[333px] w-full">
+        <div className="relative h-[200px] sm:h-[333px]">
           <Image
             fill
-            className="mt-0 rounded-xl object-cover"
+            className="rounded-xl object-cover"
             src={barbeiro.imagemUrl}
             alt={barbeiro.nome}
           />
           <Badge className="absolute top-2 left-2 bg-lime-900">
-            <StarIcon
-              size={12}
-              className="fill-lime-900 text-lime-200"
-            ></StarIcon>
+            <StarIcon size={12} className="fill-lime-900 text-lime-200" />
             <p className="font-semibold text-lime-200">5.0</p>
           </Badge>
         </div>
 
-        <div className="px-2 py-3">
-          <h3 className="truncate font-semibold text-lime-900">
+        <div className="px-3 py-3">
+          <h3 className="truncate text-sm font-semibold text-lime-900 sm:text-base">
             {barbeiro.nome}
           </h3>
-          <p className="truncate text-sm text-lime-800">{barbeiro.telefones}</p>
+          <p className="truncate text-xs text-lime-800 sm:text-sm">
+            {barbeiro.telefones}
+          </p>
           <Button
             className="mt-3 w-full cursor-pointer bg-lime-900 px-1 text-lime-200 hover:bg-lime-700"
             asChild

@@ -20,10 +20,10 @@ const BarbeiroPage = async ({ params }: BarbeiroPageProps) => {
     <div>
       <div className="relative h-[300px] w-full">
         <Image
-          src={barbeiro.imagemUrl}
+          src={barbeiro?.imagemUrl}
           fill
           className="object-cover"
-          alt={barbeiro.nome}
+          alt={barbeiro?.nome}
         ></Image>
         <Button
           size="icon"

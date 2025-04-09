@@ -15,6 +15,17 @@ const Home = async () => {
   const barbeiros = await db.barbeiros.findMany({})
 
   const servicos = await db.servicosBarbeiro.findMany({})
+  const barberCount = barbeiros.length
+
+  // Função para calcular a largura com base no número de barbeiros
+  const getBarberWidthClass = (count: number) => {
+    if (count === 1) return "w-full h-[370px]"
+    if (count === 2) return "w-1/2"
+    if (count === 3) return "w-1/3"
+    if (count === 4) return "w-1/4"
+    if (count >= 5) return "w-1/5"
+    return "w-full" // Padrão
+  }
 
   return (
     <div>
@@ -82,10 +93,24 @@ const Home = async () => {
         <h2 className="mt-6 mb-3 text-xs font-bold text-lime-800 uppercase">
           Recomendado
         </h2>
-        <div className="scrollbar-hiden md:scrollbar-thin md:scrollbar-thumb-lime-100 md:scrollbar-track-lime-200 flex gap-4 overflow-x-auto">
-          {barbeiros.map((barbeiro) => (
-            <BarberItem key={barbeiro.id} barbeiro={barbeiro} />
-          ))}
+
+        {/* Lista de Barbeiros com flexbox responsivo e scroll horizontal */}
+        <div
+          className={`flex flex-nowrap justify-center gap-1 overflow-x-auto ${
+            barberCount > 5 ? "space-x-4" : ""
+          }`}
+        >
+          {barbeiros.map((barbeiro) => {
+            const widthClass = getBarberWidthClass(barberCount) // Usa a função para obter a largura correta
+            return (
+              <div
+                key={barbeiro.id}
+                className={`${widthClass} flex-none`} // Aplica a classe calculada
+              >
+                <BarberItem barbeiro={barbeiro} />
+              </div>
+            )
+          })}
         </div>
 
         <div className="scrollbar-hiden md:scrollbar-thin md:scrollbar-thumb-lime-100 md:scrollbar-track-lime-200 mt-6 flex gap-4 overflow-x-auto">
