@@ -1,6 +1,7 @@
-const { PrismaClient } = require("@prisma/client");
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { PrismaClient } = require("@prisma/client")
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 async function seedDatabase() {
   try {
@@ -15,7 +16,7 @@ async function seedDatabase() {
       "https://utfs.io/f/60f24f5c-9ed3-40ba-8c92-0cd1dcd043f9-16w.png",
       "https://utfs.io/f/f64f1bd4-59ce-4ee3-972d-2399937eeafc-16x.png",
       "https://utfs.io/f/e995db6d-df96-4658-99f5-11132fd931e1-17j.png",
-    ];
+    ]
 
     const creativeNames = [
       "Barbearia Vintage",
@@ -28,7 +29,7 @@ async function seedDatabase() {
       "Aparência Impecável",
       "Estilo Urbano",
       "Estilo Clássico",
-    ];
+    ]
 
     const services = [
       {
@@ -73,15 +74,15 @@ async function seedDatabase() {
         imagemUrl:
           "https://utfs.io/f/8a457cda-f768-411d-a737-cdb23ca6b9b5-b3pegf.png",
       },
-    ];
+    ]
 
-    const barbers = [];
+    const barbers = []
 
     for (let i = 0; i < 10; i++) {
-      const nome = creativeNames[i];
-      const telefones = `(11) 99999-999${i}`;
-      const descricao = "Uma barbearia moderna com serviços de alta qualidade.";
-      const imagemUrl = images[i];
+      const nome = creativeNames[i]
+      const telefones = `(11) 99999-999${i}`
+      const descricao = "Uma barbearia moderna com serviços de alta qualidade."
+      const imagemUrl = images[i]
 
       const barbeiro = await prisma.barbeiros.create({
         data: {
@@ -90,7 +91,7 @@ async function seedDatabase() {
           descricao,
           imagemUrl,
         },
-      });
+      })
 
       for (const service of services) {
         await prisma.servicosBarbeiro.create({
@@ -105,19 +106,19 @@ async function seedDatabase() {
               },
             },
           },
-        });
+        })
       }
 
-      barbers.push(barbeiro);
+      barbers.push(barbeiro)
     }
 
-    console.log("Seeding completed successfully!");
-    await prisma.$disconnect();
+    console.log("Seeding completed successfully!")
+    await prisma.$disconnect()
   } catch (error) {
-    console.error("Erro ao criar os barbeiros:", error);
-    await prisma.$disconnect();
-    process.exit(1);
+    console.error("Erro ao criar os barbeiros:", error)
+    await prisma.$disconnect()
+    process.exit(1)
   }
 }
 
-seedDatabase();
+seedDatabase()

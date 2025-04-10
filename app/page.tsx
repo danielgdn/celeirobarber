@@ -12,14 +12,18 @@ import ServicosItem from "./_components/servicos-item"
 import { buscaRapida } from "./_constants/search"
 
 const Home = async () => {
-  const barbeiros = await db.barbeiros.findMany({})
+  const barbeiros = await db.barbeiros.findMany({
+    where: {
+      ativo: true,
+    },
+  })
 
   const servicos = await db.servicosBarbeiro.findMany({})
   const barberCount = barbeiros.length
 
   // Função para calcular a largura com base no número de barbeiros
   const getBarberWidthClass = (count: number) => {
-    if (count === 1) return "w-full h-[370px]"
+    if (count === 1) return "w-250"
     if (count === 2) return "w-1/2"
     if (count === 3) return "w-1/3"
     if (count === 4) return "w-1/4"
@@ -57,7 +61,7 @@ const Home = async () => {
           ))}
         </div>
 
-        <div className="relative mt-6 h-[400px] w-full">
+        <div className="relative mt-6 h-[600px] w-full">
           <Image
             alt="agende seu horário"
             src="/Teste01.jpg"
@@ -70,7 +74,7 @@ const Home = async () => {
         </h2>
         <Card>
           <CardContent className="flex justify-between p-0">
-            <div className="flex flex-col gap-2 py-5 pl-5">
+            <div className="flex flex-col gap-5 py-3 pl-5">
               <Badge className="w-fit bg-lime-900 text-lime-200">
                 Confirmado
               </Badge>
@@ -97,7 +101,7 @@ const Home = async () => {
         {/* Lista de Barbeiros com flexbox responsivo e scroll horizontal */}
         <div
           className={`flex flex-nowrap justify-center gap-1 overflow-x-auto ${
-            barberCount > 5 ? "space-x-4" : ""
+            barberCount > 5 ? "space-x-2" : ""
           }`}
         >
           {barbeiros.map((barbeiro) => {

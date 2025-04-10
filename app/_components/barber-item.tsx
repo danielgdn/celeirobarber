@@ -14,7 +14,7 @@ const BarberItem = ({ barbeiro }: BarberItemProps) => {
   return (
     <Card className="m-2 py-0">
       <CardContent className="mt-0 p-0">
-        <div className="relative h-[200px] sm:h-[333px]">
+        <div className="relative h-[200px]">
           <Image
             fill
             className="rounded-xl object-cover"
