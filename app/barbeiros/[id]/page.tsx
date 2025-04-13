@@ -1,8 +1,10 @@
+import ServicosBarbeiroItem from "@/app/_components/servicos-barbeiro-item"
 import { Button } from "@/app/_components/ui/button"
 import { db } from "@/app/_lib/prisma"
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { notFound } from "next/navigation"
 
 interface BarbeiroPageProps {
   params: {
@@ -15,7 +17,14 @@ const BarbeiroPage = async ({ params }: BarbeiroPageProps) => {
     where: {
       id: params.id,
     },
+    include: {
+      servicos: true,
+    },
   })
+
+  if (!barbeiro) {
+    return notFound()
+  }
   return (
     <div>
       <div className="relative h-[300px] w-full">
@@ -58,6 +67,14 @@ const BarbeiroPage = async ({ params }: BarbeiroPageProps) => {
       <div className="space-y-2 border-b border-solid p-5">
         <h2 className="text-xs font-bold uppercase">Sobre</h2>
         <p className="text-justify text-sm">{barbeiro?.descricao}</p>
+      </div>
+      <div className="space-y-3 p-4">
+        <h2 className="text-xs font-bold uppercase">Serviços</h2>
+        <div className="space-y-3">
+          {barbeiro.servicos.map((servico) => (
+            <ServicosBarbeiroItem key={servico.id} servico={servico} />
+          ))}
+        </div>
       </div>
     </div>
   )

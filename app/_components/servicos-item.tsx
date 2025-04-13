@@ -25,6 +25,12 @@ const ServicosItem = ({ servicos }: ServicosItemProps) => {
             {servicos.nome}
           </h3>
           <p className="truncate text-sm text-lime-800">{servicos.descricao}</p>
+          <p className="truncate text-sm text-lime-800">
+            {Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(Number(servicos.preco))}
+          </p>
           <Button className="mt-3 w-full cursor-pointer bg-lime-900 px-1 text-lime-200 hover:bg-lime-700">
             Reservar
           </Button>
