@@ -1,7 +1,14 @@
 import ServicosBarbeiroItem from "@/app/_components/servicos-barbeiro-item"
 import { Button } from "@/app/_components/ui/button"
 import { db } from "@/app/_lib/prisma"
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
+import {
+  ChevronLeftIcon,
+  FacebookIcon,
+  InstagramIcon,
+  MapPinIcon,
+  MenuIcon,
+  StarIcon,
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -67,6 +74,22 @@ const BarbeiroPage = async ({ params }: BarbeiroPageProps) => {
       <div className="space-y-2 border-b border-solid p-5">
         <h2 className="text-xs font-bold uppercase">Sobre</h2>
         <p className="text-justify text-sm">{barbeiro?.descricao}</p>
+        <p className="flex">
+          <a
+            href="https://www.instagram.com/mrbeast/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <InstagramIcon className="text-rose-700" />
+          </a>
+          <a
+            href="https://www.instagram.com/mrbeast/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FacebookIcon className="text-blue-800" />
+          </a>
+        </p>
       </div>
       <div className="space-y-3 p-4">
         <h2 className="text-xs font-bold uppercase">Serviços</h2>
