@@ -1,5 +1,8 @@
 import ServicosBarbeiroItem from "@/app/_components/servicos-barbeiro-item"
 import { Button } from "@/app/_components/ui/button"
+import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
+
+import Sidebar from "@/app/_components/ui/sidebar-sheet"
 import { db } from "@/app/_lib/prisma"
 import {
   ChevronLeftIcon,
@@ -51,12 +54,18 @@ const BarbeiroPage = async ({ params }: BarbeiroPageProps) => {
           </Link>
         </Button>
 
-        <Button
-          size="icon"
-          className="absolute top-4 right-4 fill-lime-900 text-lime-200"
-        >
-          <MenuIcon />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              size="icon"
+              variant="outline"
+              className="absolute top-4 right-4 cursor-pointer bg-lime-900 text-lime-100 hover:bg-lime-700"
+            >
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+          <Sidebar />
+        </Sheet>
       </div>
       <div className="border-b border-solid p-5">
         <h1 className="mb-3 text-xl font-bold">{barbeiro?.nome}</h1>
