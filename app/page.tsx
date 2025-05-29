@@ -61,14 +61,27 @@ const Home = async () => {
           ))}
         </div>
 
-        <div className="relative mt-6 h-[600px] w-full">
-          <Image
-            alt="agende seu horário"
-            src="/Teste01.jpg"
-            fill
-            className="h-40 w-400 rounded-xl object-cover"
-          />
+        <div className="relative mt-6 flex w-full flex-row items-stretch gap-4">
+          <div className="relative h-[300px] flex-1">
+            <Image
+              alt="agende seu horário"
+              src="/Teste01.jpg"
+              fill
+              className="rounded-xl object-cover"
+            />
+          </div>
+
+          <div className="flex flex-1 flex-col justify-center rounded-xl bg-gray-100 p-6 shadow">
+            <h2 className="mb-4 text-2xl font-bold">Celeiro Sallon Barber</h2>
+            <p className="text-gray-600">
+              Desde o ano 2000, somos referência em cortes clássicos e modernos,
+              atendendo com excelência e tradição na cidade de Navegantes. Venha
+              nos conhecer e agende já o seu horário para uma experiência única
+              em barbearia!
+            </p>
+          </div>
         </div>
+
         <h2 className="mt-6 mb-3 text-xs font-bold text-lime-800 uppercase">
           Agendamentos
         </h2>

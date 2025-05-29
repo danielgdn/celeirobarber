@@ -1,12 +1,23 @@
 import Image from "next/image"
 import { Button } from "./button"
-import { CalendarIcon, HomeIcon, LogOutIcon } from "lucide-react"
+import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./sheet"
+import { FcGoogle } from "react-icons/fc"
 
-import { Avatar } from "./avatar"
-import { AvatarImage } from "./avatar"
+{
+  /*import { Avatar } from "./avatar"
+import { AvatarImage } from "./avatar"*/
+}
 import Link from "next/link"
 import { buscaRapida } from "@/app/_constants/search"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./dialog"
 
 const Sidebar = () => {
   return (
@@ -15,13 +26,36 @@ const Sidebar = () => {
         <SheetTitle>MENU</SheetTitle>
       </SheetHeader>
       <div className="flex items-center gap-3 border-b border-solid p-5 py-5">
-        <Avatar>
+        <h2 className="text-lg font-bold">olá, faça seu login</h2>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              className="cursor-pointer bg-lime-900 text-lime-200 hover:bg-lime-700"
+              size="icon"
+            >
+              <LogInIcon />
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Faça seu login na Plataforma</DialogTitle>
+              <DialogDescription>
+                Faça seu login usando sua conta do Google
+              </DialogDescription>
+            </DialogHeader>
+            <Button variant="lime">
+              <FcGoogle /> GOOGLE
+            </Button>
+          </DialogContent>
+        </Dialog>
+
+        {/*  <Avatar>
           <AvatarImage src="https://images.unsplash.com/photo-1742201877377-03d18a323c18?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D://unsplash.com/pt-br/fotografias/o-homem-mongol-usa-um-chapeu-e-um-casaco-de-pele-tradicionais-qvm1ZpgtiUw" />
         </Avatar>
         <div>
           <p className="font-bold"> Daniel Sousa</p>
           <p className="text-xs">13-abril, 06:03 </p>
-        </div>
+        </div>*/}
       </div>
 
       <div className="flex flex-col gap-2 border-b border-solid p-5">
